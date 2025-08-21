@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 3.16)
+project(QtAdvancedInterface VERSION 1.0.0 LANGUAGES CXX)
+
+# Configuration C++
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Recherche de Qt
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
+
+# Activation de MOC pour Qt
+set(CMAKE_AUTOMOC ON)
+
+# Fichiers sources
+set(SOURCES
+    main.cpp
+)
+
+# Création de l'exécutable
+add_executable(QtAdvancedInterface ${SOURCES})
+
+# Liaison avec Qt
+target_link_libraries(QtAdvancedInterface 
+    Qt6::Core
+    Qt6::Widgets
+)
+
+# Configuration pour Windows (optionnel)
+if(WIN32)
+    set_property(TARGET QtAdvancedInterface PROPERTY WIN32_EXECUTABLE TRUE)
+endif()
+
+# Configuration pour macOS (optionnel)
+if(APPLE)
+    set_property(TARGET QtAdvancedInterface PROPERTY MACOSX_BUNDLE TRUE)
+endif()
